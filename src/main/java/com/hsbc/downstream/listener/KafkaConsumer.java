@@ -28,7 +28,7 @@ public class KafkaConsumer {
 
 
     @KafkaListener(topics = "downstream2", group = "group_downstream2",
-            containerFactory = "userKafkaListenerFactory")
+            containerFactory = "group2KafkaListenerFactory")
     public void consumeJson(TransactionRecord  record) {
     	logger.info("Consumed JSON Message: " + record);
         restApiDownStreamWriter.write(record);

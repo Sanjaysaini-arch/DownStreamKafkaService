@@ -7,6 +7,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -27,7 +28,9 @@ public class RestApiDownStreamWriter {
 
 	@Autowired
 	RestTemplate restTemplate;
-
+	
+   @Value("${com.hsbc.downstream.restapiURI}")
+    private String restapiURI;
 	
 	public void write(TransactionRecord record)  {
 			HttpHeaders headers = new HttpHeaders();
@@ -35,7 +38,7 @@ public class RestApiDownStreamWriter {
 			HttpEntity<TransactionRecord> entity = new HttpEntity<TransactionRecord>(record, headers);
 			try {
 				String out = restTemplate
-						.exchange("http://localhost:8093/postDownStreamDto", HttpMethod.POST, entity, String.class)
+						.exchange(restapiURI, HttpMethod.POST, entity, String.class)
 						.getBody();
 				logger.info("RestApiDownStreamWriterSuccess:" + out);
 			} catch (RestClientException ex) {

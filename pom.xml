@@ -5,12 +5,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.techprimers.kafka</groupId>
-	<artifactId>spring-boot-kafka-consumer-example</artifactId>
+	<artifactId>down-stream-kafka-Service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>spring-boot-kafka-consumer-example</name>
-	<description>Demo project for Spring Boot</description>
+	<name>down-stream-kafka-Service</name>
+	<description>down stream kafka Service</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
